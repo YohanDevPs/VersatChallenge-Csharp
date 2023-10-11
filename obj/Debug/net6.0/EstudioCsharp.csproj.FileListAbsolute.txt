@@ -1,0 +1,14 @@
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\bin\Debug\net6.0\EstudioCsharp.exe
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\bin\Debug\net6.0\EstudioCsharp.deps.json
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\bin\Debug\net6.0\EstudioCsharp.runtimeconfig.json
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\bin\Debug\net6.0\EstudioCsharp.dll
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\bin\Debug\net6.0\EstudioCsharp.pdb
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\obj\Debug\net6.0\EstudioCsharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\obj\Debug\net6.0\EstudioCsharp.AssemblyInfoInputs.cache
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\obj\Debug\net6.0\EstudioCsharp.AssemblyInfo.cs
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\obj\Debug\net6.0\EstudioCsharp.csproj.CoreCompileInputs.cache
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\obj\Debug\net6.0\EstudioCsharp.dll
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\obj\Debug\net6.0\refint\EstudioCsharp.dll
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\obj\Debug\net6.0\EstudioCsharp.pdb
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\obj\Debug\net6.0\EstudioCsharp.genruntimeconfig.cache
+C:\Users\yohan\workspace\CSharp\EstudioCsharp\obj\Debug\net6.0\ref\EstudioCsharp.dll

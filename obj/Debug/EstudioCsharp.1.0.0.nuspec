@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>EstudioCsharp</id>
+    <version>1.0.0</version>
+    <authors>EstudioCsharp</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\yohan\workspace\CSharp\EstudioCsharp\bin\Debug\net6.0\EstudioCsharp.runtimeconfig.json" target="lib\net6.0\EstudioCsharp.runtimeconfig.json" />
+    <file src="C:\Users\yohan\workspace\CSharp\EstudioCsharp\bin\Debug\net6.0\EstudioCsharp.dll" target="lib\net6.0\EstudioCsharp.dll" />
+  </files>
+</package>
