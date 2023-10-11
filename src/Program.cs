@@ -1,6 +1,8 @@
-﻿using System;
+﻿using EstudioCsharp.src.Domain.entities;
+using EstudioCsharp.src.Domain.mocks;
+using System;
+using System.Drawing;
 using System.Reflection;
-using EstudioCsharp.src.Domain.classificacion;
 
 namespace EstudioCsharp.enums
 {
@@ -9,18 +11,9 @@ namespace EstudioCsharp.enums
         private static void Main(string[] args)
         {
 
-            var concept = ConceptType.PROPERTY;
-            var classificationAttribute = GetClassificationAttribute(concept);
-
-            Console.WriteLine($"Classification for {concept}: {classificationAttribute.Classification}");
-        }
-
-        private static ClassificationAsset GetClassificationAttribute(ConceptType concept)
-        {
-            var fieldInfo = typeof(ConceptType).GetField(concept.ToString());
-            var attribute = (ClassificationAsset)Attribute.GetCustomAttribute(fieldInfo, typeof(ClassificationAsset));
-
-            return attribute;
+            foreach (AccountRecord arg in MockAccountRecord.GenerateRandomAccountRecords(500)) { 
+                Console.WriteLine(arg);
+            }
         }
     }
 }

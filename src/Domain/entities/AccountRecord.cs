@@ -1,6 +1,7 @@
 ﻿using EstudioCsharp.enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,19 @@ namespace EstudioCsharp.src.Domain.entities
         public ConceptType GetConceptType()
         {
             return ConceptType;
+        }
+
+        public override string? ToString()
+        {
+            return $"Date: {Date}, Amount: {Amount}, ConceptType: {GetEnumDescription(ConceptType)}";
+        }
+
+        static string GetEnumDescription(Enum value)
+        {
+            var field = value.GetType().GetField(value.ToString());
+            var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
+
+            return attribute == null ? value.ToString() : attribute.Description;
         }
     }
 }
