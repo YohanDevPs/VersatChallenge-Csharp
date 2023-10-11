@@ -1,15 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace EstudioCsharp.enums
 {
-	internal enum ConceptType
-	{
-		[Description("Dinero actual"), ClassificationAsset("Activo Curriente")]
+    [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
+    public class ClassificationAsset : Attribute
+    {
+        public string Classification { get; }
+
+        public ClassificationAsset(string classification)
+        {
+            Classification = classification;
+        }
+    }
+
+    internal enum ConceptType
+    {
+        [Description("Dinero actual"), ClassificationAsset("Activo Curriente")]
         CURRENT_MONEY,
         [Description("Cuentas para recibir"), ClassificationAsset("Activo Curriente")]
         BILL_TO_RECEIVE,
@@ -36,5 +47,5 @@ namespace EstudioCsharp.enums
         FINANCE_LEASES,
         [Description("Préstamo a largo plazo"), ClassificationAsset("Passivos a largo plazo")]
         LONG_TERM_LOAN
-	}
+    }
 }

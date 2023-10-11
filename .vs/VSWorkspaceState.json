@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Domain",
+    "\\src\\entities",
+    "\\src\\processing"
+  ],
+  "SelectedNode": "\\src\\entities\\AccountRecord.cs",
+  "PreviewInSolutionExplorer": false
+}
