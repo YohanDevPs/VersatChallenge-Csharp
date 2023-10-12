@@ -20,11 +20,10 @@ namespace EstudioCsharp.enums
 
             foreach (var record in processor.GetFilteredAccountRecords())
             {
-                Console.WriteLine("Concept: " + record.GetConceptType().ToString()+ "   Amount: " + record.GetAmount());
+              Console.WriteLine("Concept: " + record.GetConceptType().ToString()+ "   Amount: " + record.GetAmount());
             }
 
-
-            processor.GetBalanceSheet().printBalanceSheet();
+            processor.GetLiquidAsset().PrintLiquidAssets();
         }
     }
 }

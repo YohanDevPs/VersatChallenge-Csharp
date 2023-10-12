@@ -18,22 +18,22 @@ namespace EstudioCsharp.src.Domain.processing.analysis
             this.RecordDictionary = recordDictionary;
         }
 
-        public decimal GetTotalActivesAmount()
+        private decimal GetTotalActivesAmount()
         {
             return FinancialDataProcessor.GetTotalActivesAmount(RecordDictionary);
         }
 
-        public decimal GetTotalPassivesAmount()
+        private decimal GetTotalPassivesAmount() 
         {
             return FinancialDataProcessor.GetTotalPassivesAmount(RecordDictionary);
         }
 
-        public decimal GetAmountByAsset(string asset)
+        private decimal GetAmountByAsset(string asset)
         {
             return RecordDictionary[asset].Sum(c => c.GetAmount());
         }
 
-        public decimal GetAmountByConceptType(ConceptType type)
+        private decimal GetAmountByConceptType(ConceptType type)
         {
             return RecordDictionary[FinancialDataProcessor.GetClassificacionAsset(type)]
                 .Where(c => c.GetConceptType().Equals(type))

@@ -24,8 +24,20 @@ namespace EstudioCsharp.src.Domain.processing
             EndDate = endDate;
         }
 
+        public LiquidAsset GetLiquidAsset()
+        {
+            var mapRecords = GetConvertedMapAccountRecords();
+
+            return new LiquidAsset(
+                mapRecords["Activos Currientes"].Sum(c => c.GetAmount()), 
+                mapRecords["Passivos currientes"].Sum(c => c.GetAmount())
+                );
+        }
+
+
         public BalanceSheet GetBalanceSheet()
         {
+
             return new BalanceSheet(GetConvertedMapAccountRecords());
         }
 
@@ -93,7 +105,7 @@ namespace EstudioCsharp.src.Domain.processing
             ClassificationAsset classificationAttribute = (ClassificationAsset) Attribute.GetCustomAttribute(memberInfo, typeof(ClassificationAsset));
 
 
-            return classificationAttribute.Classification;    
+            return classificationAttribute?.Classification ?? "clasificación no encontrada";
         }
 
     }    
