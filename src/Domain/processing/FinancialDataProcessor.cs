@@ -48,10 +48,10 @@ namespace EstudioCsharp.src.Domain.processing
         public static decimal GetTotalActivesAmount(Dictionary<string, HashSet<AccountRecord>> recordDictionary)
         {
 
-            if (recordDictionary.ContainsKey("Activo Curriente") || recordDictionary.ContainsKey("Activos fijos"))
+            if (recordDictionary.ContainsKey("Activos Currientes") || recordDictionary.ContainsKey("Activos fijos"))
             {
                 var activoRecords = recordDictionary
-                    .Where(kv => kv.Key.Equals("Activo Curriente") || kv.Key.Equals("Activos fijos"))
+                    .Where(kv => kv.Key.Equals("Activos Currientes") || kv.Key.Equals("Activos fijos"))
                     .SelectMany(kv => kv.Value);
 
                 var ttt = activoRecords;
@@ -71,6 +71,7 @@ namespace EstudioCsharp.src.Domain.processing
 
             if (recordDictionary.ContainsKey("Passivos currientes") || recordDictionary.ContainsKey("Passivos a largo plazo"))
             {
+              
                 var activoRecords = recordDictionary
                     .Where(kv => kv.Key.Equals("Passivos currientes") || kv.Key.Equals("Passivos a largo plazo"))
                     .SelectMany(kv => kv.Value);

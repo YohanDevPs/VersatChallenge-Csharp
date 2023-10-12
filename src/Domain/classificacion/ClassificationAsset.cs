@@ -20,11 +20,11 @@ namespace EstudioCsharp.enums
 
     internal enum ConceptType
     {
-        [Description("Dinero actual"), ClassificationAsset("Activo Curriente")]
+        [Description("Dinero actual"), ClassificationAsset("Activos Currientes")]
         CURRENT_MONEY,
-        [Description("Cuentas para recibir"), ClassificationAsset("Activo Curriente")]
+        [Description("Cuentas para recibir"), ClassificationAsset("Activos Currientes")]
         BILL_TO_RECEIVE,
-        [Description("Efectivos"), ClassificationAsset("Activo Curriente")]
+        [Description("Efectivos"), ClassificationAsset("Activos Currientes")]
         EFECTIVO,
 
         [Description("Propriedades"), ClassificationAsset("Activos fijos")]
