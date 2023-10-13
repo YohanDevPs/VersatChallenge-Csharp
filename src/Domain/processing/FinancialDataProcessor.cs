@@ -1,6 +1,7 @@
 ﻿using EstudioCsharp.enums;
 using EstudioCsharp.src.Domain.entities;
 using EstudioCsharp.src.Domain.processing.analysis;
+using EstudioCsharp.src.Domain.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,26 @@ namespace EstudioCsharp.src.Domain.processing
             EndDate = endDate;
         }
 
+        public StatementIncome GetStatementIncome()
+        {
+            var mapRecords = GetConvertedMapAccountRecords();
+
+            return new StatementIncome(
+                GetTotalActivesAmount(mapRecords), 
+                GetTotalPassivesAmount(mapRecords)
+                );
+        }
+
+        public Profitability GetProfitability()
+        {
+            var mapRecords = GetConvertedMapAccountRecords();
+
+            decimal totalIncome = GetTotalActivesAmount(mapRecords);
+            decimal netIncome = Decimal.Subtract(totalIncome, GetTotalPassivesAmount(mapRecords));
+
+            return new Profitability(totalIncome, netIncome);
+        }
+
         public LiquidAsset GetLiquidAsset()
         {
             var mapRecords = GetConvertedMapAccountRecords();
@@ -37,7 +58,6 @@ namespace EstudioCsharp.src.Domain.processing
 
         public BalanceSheet GetBalanceSheet()
         {
-
             return new BalanceSheet(GetConvertedMapAccountRecords());
         }
 
@@ -53,7 +73,7 @@ namespace EstudioCsharp.src.Domain.processing
         public Dictionary<string, HashSet<AccountRecord>> GetConvertedMapAccountRecords()
         {
             return GetFilteredAccountRecords()
-                .GroupBy(record => GetClassificacionAsset(record.GetConceptType()))
+                .GroupBy(record => EnumUtils.GetClassificacionAsset(record.GetConceptType()))
                 .ToDictionary(g => g.Key, g => g.ToHashSet());
         }
 
@@ -97,16 +117,5 @@ namespace EstudioCsharp.src.Domain.processing
                 return 0;
             }
         }
-
-
-        public static string GetClassificacionAsset(ConceptType conceptType)
-        {
-            MemberInfo memberInfo = typeof(ConceptType).GetMember(conceptType.ToString())[0];
-            ClassificationAsset classificationAttribute = (ClassificationAsset) Attribute.GetCustomAttribute(memberInfo, typeof(ClassificationAsset));
-
-
-            return classificationAttribute?.Classification ?? "clasificación no encontrada";
-        }
-
     }    
 }

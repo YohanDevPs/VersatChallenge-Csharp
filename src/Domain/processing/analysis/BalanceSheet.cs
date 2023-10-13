@@ -23,7 +23,7 @@ namespace EstudioCsharp.src.Domain.processing.analysis
             return FinancialDataProcessor.GetTotalActivesAmount(RecordDictionary);
         }
 
-        private decimal GetTotalPassivesAmount() 
+        private decimal GetTotalPassivesAmount()
         {
             return FinancialDataProcessor.GetTotalPassivesAmount(RecordDictionary);
         }
@@ -35,26 +35,26 @@ namespace EstudioCsharp.src.Domain.processing.analysis
 
         private decimal GetAmountByConceptType(ConceptType type)
         {
-            return RecordDictionary[FinancialDataProcessor.GetClassificacionAsset(type)]
+            return RecordDictionary[EnumUtils.GetClassificacionAsset(type)]
                 .Where(c => c.GetConceptType().Equals(type))
                 .Sum(c => c.GetAmount());
         }
 
-        public void printBalanceSheet()
+        public void PrintBalanceSheet()
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("---- BALANCE GENERAL ---- \n\n");
-            appendCategoryDetails(stringBuilder, "Activos Currientes");
-            appendCategoryDetails(stringBuilder, "Activos fijos");
-            stringBuilder.Append($"TOTAL ACTIVOS: $ {GetTotalActivesAmount()}\n\n");
-            appendCategoryDetails(stringBuilder, "Passivos currientes");
-            appendCategoryDetails(stringBuilder, "Passivos a largo plazo");
-            stringBuilder.Append($"TOTAL PASSIVO: $ {GetTotalPassivesAmount()}\n");
+            AppendCategoryDetails(stringBuilder, "Activos Currientes");
+            AppendCategoryDetails(stringBuilder, "Activos fijos");
+            stringBuilder.Append($"TOTAL ACTIVOS: $ {NumberUtils.FormatLatinAmericanNumber(GetTotalActivesAmount())}\n\n");
+            AppendCategoryDetails(stringBuilder, "Passivos currientes");
+            AppendCategoryDetails(stringBuilder, "Passivos a largo plazo");
+            stringBuilder.Append($"TOTAL PASSIVO: $ {NumberUtils.FormatLatinAmericanNumber(GetTotalPassivesAmount())}\n");
 
             Console.WriteLine(stringBuilder);
         }
 
-        private void appendCategoryDetails(StringBuilder stringBuilder, string assetType)
+        private void AppendCategoryDetails(StringBuilder stringBuilder, string assetType)
         {
             stringBuilder.Append($"{assetType}{Environment.NewLine}");
             HashSet<ConceptType> processedConceptTypes = new HashSet<ConceptType>();
@@ -64,12 +64,15 @@ namespace EstudioCsharp.src.Domain.processing.analysis
                 ConceptType conceptType = record.GetConceptType();
                 if (processedConceptTypes.Add(conceptType))
                 {
-                    stringBuilder.Append(EnumUtils.GetDescription(conceptType))
-                            .Append(": $ ")
-                            .Append(GetAmountByConceptType(conceptType)+ "\n");
+                    stringBuilder.Append($"{conceptType.GetDescription()}: " +
+                        $"$ {NumberUtils.FormatLatinAmericanNumber(GetAmountByConceptType(conceptType))}\n");
                 }
             }
-            stringBuilder.Append($"Total {assetType}: $ {GetAmountByAsset(assetType)}{Environment.NewLine}{Environment.NewLine}");
+
+            stringBuilder.Append($"Total {assetType}: $ " +
+                $"{NumberUtils.FormatLatinAmericanNumber(GetAmountByAsset(assetType))}" +
+                $"{Environment.NewLine}{Environment.NewLine}"
+                );
             processedConceptTypes.Clear();
         }
     }

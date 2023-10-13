@@ -1,6 +1,7 @@
 ﻿using EstudioCsharp.src.Domain.entities;
 using EstudioCsharp.src.Domain.mocks;
 using EstudioCsharp.src.Domain.processing;
+using EstudioCsharp.src.Domain.utils;
 using System;
 using System.Drawing;
 using System.Net.Mime;
@@ -20,10 +21,13 @@ namespace EstudioCsharp.enums
 
             foreach (var record in processor.GetFilteredAccountRecords())
             {
-              Console.WriteLine("Concept: " + record.GetConceptType().ToString()+ "   Amount: " + record.GetAmount());
+              Console.WriteLine("Concept: " + record.GetConceptType().GetDescription()+ "   Amount: " + record.GetAmount());
             }
 
+            processor.GetBalanceSheet().PrintBalanceSheet();
             processor.GetLiquidAsset().PrintLiquidAssets();
+            processor.GetProfitability().PrintProfitability();
+            processor.GetStatementIncome().PrintStatementIncome();
         }
     }
 }

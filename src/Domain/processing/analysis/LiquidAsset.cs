@@ -22,7 +22,7 @@ namespace EstudioCsharp.src.Domain.processing.analysis
         {
             decimal currentRatio = GetCurrentRatio(CurrentAsset, CurrentLiabilities);
 
-            Console.WriteLine($"\n\n---- ANÁLISE DE LIQUIDEZ ----\n" +
+            Console.WriteLine($"\n---- ANÁLISE DE LIQUIDEZ ----\n" +
                               $"Liquidez Corrente: {currentRatio:F2} o {Convert.ToInt32(currentRatio * 100)}%");
         }
 
